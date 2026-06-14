@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fly Vision Pro Agent</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f4f4f4;margin:0;padding:0}
+header{background:#1e3a8a;color:white;text-align:center;padding:20px}
+.container{width:90%;max-width:800px;margin:auto;margin-top:20px}
+.card{background:white;padding:20px;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,.1);margin-bottom:20px}
+input,select,textarea{width:100%;padding:10px;margin-top:8px;margin-bottom:15px;border:1px solid #ccc;border-radius:5px}
+button{background:#1e3a8a;color:white;border:none;padding:12px;width:100%;border-radius:5px;cursor:pointer}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat-box{background:#1e3a8a;color:white;text-align:center;padding:15px;border-radius:8px}
+</style>
+</head>
+<body>
+<header>
+<h1>Fly Vision Pro Agent</h1>
+<p>Gestion des ventes et commandes des agents</p>
+</header>
+
+<div class="container">
+<div class="card">
+<h2>Tableau de bord</h2>
+<div class="stats">
+<div class="stat-box"><h3>15</h3><p>Ventes</p></div>
+<div class="stat-box"><h3>45 000 FCFA</h3><p>Commission</p></div>
+<div class="stat-box"><h3>3</h3><p>Commandes en cours</p></div>
+</div>
+</div>
+
+<div class="card">
+<h2>Nouvelle commande</h2>
+<form id="commandeForm">
+<label>Nom du client</label>
+<input type="text" id="nomClient" required>
+<label>Téléphone</label>
+<input type="text" id="telephone" required>
+<label>Adresse</label>
+<input type="text" id="adresse" required>
+<label>Produit</label>
+<select id="produit">
+<option>Casque Bluetooth</option>
+<option>Montre Connectée</option>
+<option>Écouteurs Sans Fil</option>
+<option>Power Bank</option>
+</select>
+<label>Quantité</label>
+<input type="number" id="quantite" value="1">
+<label>Commentaire</label>
+<textarea id="commentaire"></textarea>
+<button type="submit">Envoyer la commande</button>
+</form>
+</div>
+
+<div class="card">
+<h2>Historique des commandes</h2>
+<ul id="historique">
+<li>Casque Bluetooth - Livré</li>
+<li>Montre Connectée - En livraison</li>
+<li>Power Bank - En attente</li>
+</ul>
+</div>
+</div>
+
+<script>
+document.getElementById("commandeForm").addEventListener("submit", function(e){
+e.preventDefault();
+let nom=document.getElementById("nomClient").value;
+let produit=document.getElementById("produit").value;
+let historique=document.getElementById("historique");
+let li=document.createElement("li");
+li.textContent=produit+" - Commande créée pour "+nom;
+historique.appendChild(li);
+alert("Commande enregistrée avec succès !");
+this.reset();
+});
+</script>
+</body>
+</html>
